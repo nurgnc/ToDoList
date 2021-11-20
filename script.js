@@ -8,7 +8,7 @@ let id = 0;
 
 //class names 
 const CHECK = "fa-check-circle";
-const UNCHECK = "fa-circle-thin";
+const UNCHECK = "fa-circle";
 const LINE_THROUGH = "lineThrough";
 
 
@@ -20,15 +20,8 @@ const today = new Date();
 
 dateElement.innerHTML = today.toLocaleDateString("en-US", options);
 
-function completeToDo(element) {
-    element.classList.toggle(CHECK);
-    element.classList.toggle(UNCHECK);
-    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
-    let elementId = element.id;
-    LIST[elementId].done = !LIST[elementId].done;
-}
 
-
+// add todo function
 function addToDo(toDo, id, done, trash) {
     if (trash) {
         return;
@@ -38,22 +31,17 @@ function addToDo(toDo, id, done, trash) {
     const LINE = done ? LINE_THROUGH : "";
 
     const text=`
-    <li class="item">
-        <i class="fa ${DONE}" job="complete" id="${id}"></i>
-        <p class="text ${LINE}">${toDo}</p>
-        <i class="de fa fa-trash-o" job="delete" id="${id}"></i>
-    </li>`
+                <li class="item">
+                    <i class="co far ${DONE}" job="complete" id="${id}"></i>
+                    <p class="text ${LINE}">${toDo}</p>
+                    <i class="de fa fa-trash-alt" job="delete" id="${id}"></i>
+                </li>`
     const position = "beforeend";
 
     list.insertAdjacentHTML(position, text);
 }
 
-
-function removeToDo(element) {
-    element.parentNode.parentNode.removeChild(element.parentNode);
-    LIST[element.id].trash = true;
-}
-
+//add an item to the list user the enter key
 document.addEventListener("keyup", function(event){
     if (event.key == "Enter") {
         const toDo = input.value;
@@ -75,9 +63,26 @@ document.addEventListener("keyup", function(event){
     }
 });
 
+//complete to do
+function completeToDo(element) {
+    element.classList.toggle(CHECK);
+    element.classList.toggle(UNCHECK);
+    element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+    let elementId = element.id;
+    LIST[elementId].done = !LIST[elementId].done;
+}
 
+//remove to do
+function removeToDo(element) {
+    element.parentNode.parentNode.removeChild(element.parentNode);
+    LIST[element.id].trash = true;
+}
+
+
+
+//target the items created dynamically
 list.addEventListener("click", function (event) {
-    let element = event.target; //<i class="de fa fa-trash-o" job="delete" id="0"></i>
+    const element = event.target; //return the clicked element inside list
     const elementJOB = event.target.attributes.job.value; // delete or complete
     console.log("element", element);
     console.log("elementJOB", elementJOB);
@@ -91,27 +96,27 @@ list.addEventListener("click", function (event) {
 
 
 
-let data = localStorage.getItem("TODO"); //restore our list array
-if (data) {
-    LIST = JSON.parse(data);
-    loadToDo(LIST); // we load the list to the page
-    id = LIST.length;
-} else {
-    LIST = [];
-    id = 0;
-}
+// let data = localStorage.getItem("TODO"); //restore our list array
+// if (data) {
+//     LIST = JSON.parse(data);
+//     loadToDo(LIST); // we load the list to the page
+//     id = LIST.length;
+// } else {
+//     LIST = [];
+//     id = 0;
+// }
 
-function loadToDo(array) {
-    array.forEach(function(item) {
-        addToDo(item.name, item.id, item.done, item.trash);
-    })
+// function loadToDo(array) {
+//     array.forEach(function(item) {
+//         addToDo(item.name, item.id, item.done, item.trash);
+//     })
     
-}
+// }
 
-//clear and reload
-clear.addEventListener("click", function(){
-    localStorage.clear();
-    localStorage.reload();
-})
+// //clear and reload
+// clear.addEventListener("click", function(){
+//     localStorage.clear();
+//     localStorage.reload();
+// })
 
 
