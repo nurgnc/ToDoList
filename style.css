@@ -1,4 +1,8 @@
-/* ------------ youtube.com/CodeExplained ------------ */
+/* --gray1: #f8f8f8;
+--gray2: #ececec;
+--gray3: #e4e4e4;
+--gray4: #969696;
+--gray5: #D7D7D6; */
 body{
     padding: 0;
     margin: 0;
@@ -8,52 +12,80 @@ body{
 
 /* ------------ container ------------ */
 .container{
-    padding:10px;
-    width:380px;
-    margin:0 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    background: linear-gradient(108deg ,#86E3CE, #CCABD8);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* ------------ header ------------ */
 .header{
-    width: 380px;
-    height:200px;
-    background-image: url('https://blog.prezi.com/wp-content/uploads/2019/03/jason-leung-479251-unsplash.jpg');
-    background-size: 100% 200%;
+    background-image: url("https://image.freepik.com/free-photo/pink-coral-colored-diary-year-pen-coffee-macaron-cookie-straw-woven-placemat_226903-2176.jpg");
+    background-size: cover;
     background-repeat: no-repeat;
+    width: 35%;
+    height: 30%;
     border-radius: 15px 15px 0 0;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
-.clear{
-    width : 30px;
-    height: 30px;
-    position: absolute;
-    right:20px;
-    top: 20px;
+.header .header-title {
+    text-align: left;
+    margin-left: 10px;
+    font-family: 'Estonia', cursive;
+    color: #B3815C;
+    font-size: 4rem;
+    font-weight: 700;
 }
-.clear i{
-    font-size: 30px;
-    color: #FFF;
+
+.date-clear {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 0 0;
+}
+.clear{    
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-size: 20px;
+    color: #EDAAA0;
+
+}
+.clear i {
+    margin-right: 5px;
 }
 .clear i:hover{
     cursor: pointer;
-    text-shadow: 1px 3px 5px #000;
     transform: rotate(45deg);
 }
 #date{
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
-    color: #FFF;
+    color: #EDAAA0;
     font-size: 25px;
+    padding-left: 20px;
     font-family: 'Titillium Web', sans-serif;
+}
+#date::before {
+    content: "\f073";
+    font-family: "Font Awesome 6 Free";
+    font-size: 25px;
+    margin-right: 10px;
 }
 
 /* ------------ content ------------ */
 .content{
-    width:380px;
-    height: 350px;
-    max-height:350px;
-    background-color: #FFF;
+    width: 35%;
+    height: 50%;
+    background-color: #EEF0F4;
     overflow: auto;
 }
 .content::-webkit-scrollbar { 
@@ -64,30 +96,34 @@ body{
     margin:0;
 }
 .item{
-    height: 45px;
-    min-height: 45px;
+    height: 35px;
     position: relative;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border: 1px solid #e4e4e4;
     list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: space-between; */
     padding: 5px 10px;
+    margin: 15px 20px;
+    border-radius: 10px;
+    box-shadow: rgb(0 0 0 / 15%) 0px 5px 15px 0px;
 }
-.item i.co{
-    justify-content: flex-start;
+.item i.co {
+    font-size: 20px;
+    opacity: .6;
 }
 .item i.co:hover{
     cursor: pointer;
 }
 .fa-check-circle{
     color:#6eb200;
+    font-weight: 900;
+    font-size: 20px;
 }
 .item p.text{
     font-size: 20px;
-    background-color: #FFF;
     margin-left: 15px;
+    opacity: .6;
 }
 .lineThrough{
     text-decoration: line-through;
@@ -97,6 +133,7 @@ body{
     position: absolute;
     right: 10px;
     font-size: 20px;
+    color:#af0000;
 }
 .item i.de:hover{
     color:#af0000;
@@ -110,46 +147,56 @@ body{
 }
 /* ------------ add item ------------ */
 .add-to-do{
-    position: relative;
-    width: 360px;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 35%;
     height:40px;
-    background-color: #FFF;
-    padding: 10px;
-    border-top: 1px solid rgba(0,0,0,0.1);
+    background-color: #EEF0F4;
+    border-radius: 0 0 15px 15px;
 }
 .add-to-do i{
-    position: absolute;
-    font-size: 40px;
-    color: #4162f6;
+    font-size: 20px;
+    color: #969696;
+    border: 1px solid #d7d7d6;
+    border-radius: 50%;
+    padding: 7px;
+    margin: 0 0 40px 12px;
+    box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 
 .add-to-do input{
-    position: absolute;
-    left: 50px;
-    height: 35px;
-    width: 310px;
+    width: -webkit-fill-available;
     background-color: transparent;
-    border: none;
+    border: 1px solid #d7d7d6;
     font-size: 20px;
-    padding-left:10px;
+    margin: 0 20px 40px 15px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+}
+.add-to-do input:focus, .add-to-do input:focus-visible, .add-to-do input:focus-within {
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
 }
 .add-to-do input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    color: #4162f6;
+    color: #969696;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
 .add-to-do input::-moz-placeholder { /* Firefox 19+ */
-    color: #4162f6;
+    color: #969696;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
 .add-to-do input:-ms-input-placeholder { /* IE 10+ */
-    color: #4162f6;
+    color: #969696;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
 .add-to-do input:-moz-placeholder { /* Firefox 18- */
-    color: #4162f6;
+    color: #969696;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
 }
