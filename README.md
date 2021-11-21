@@ -4,4 +4,4 @@ This project was designed using JavaScript only. Adding, deleting, completing an
 
 # Demo
 
-![](To Do List.gif)
+![](To-Do-List.gif)
